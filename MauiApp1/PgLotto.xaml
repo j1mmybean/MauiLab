@@ -9,5 +9,8 @@
             Text=""
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+            Text="OK"
+            Clicked="Button_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

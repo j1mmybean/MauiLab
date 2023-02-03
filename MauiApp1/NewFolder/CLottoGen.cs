@@ -26,5 +26,6 @@ namespace MauiApp1.NewFolder
 			numbers = numbers.OrderBy(n => n).ToList();
 			return numbers;
 		}
+
 	}
 }

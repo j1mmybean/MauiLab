@@ -16,4 +16,8 @@ public partial class PgLotto : ContentPage
 		}
 	}
 
+	private void Button_Clicked(object sender, EventArgs e)
+	{
+
+	}
 }
