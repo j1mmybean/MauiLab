@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:classDemo="http://schemas.microsoft.com/winfx/2009/xaml"
+             classDemo:Class="MauiApp1.MainPage">
+    <StackLayout>
+        <StackLayout            
+            BackgroundColor="AliceBlue"
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand">
+            
+            <Label 
+                BackgroundColor="#0000FF"
+                classDemo:Name="LabelBlue"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                HorizontalOptions="FillAndExpand"
+                Text="A"
+                FontSize="32"/>
+            <Label 
+                classDemo:Name="LabelYellow"
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="#FFFF00"
+                Text="A"
+                FontSize="32"/> 
+        </StackLayout>
+
+        <StackLayout 
+            BackgroundColor="#0000FF"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand">
+
+                <Label 
+                    classDemo:Name="LabelRed"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="#DC143C"
+                    Text="B"
+                    FontSize="32"/>
+                <Label
+                    classDemo:Name="LabelGreen"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="#00FF00"
+                    Text="B"
+                    FontSize="32"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
