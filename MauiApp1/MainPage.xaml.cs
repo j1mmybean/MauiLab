@@ -4,62 +4,58 @@ namespace MauiApp1;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-	Dictionary<string, string> colorLabel = new Dictionary<string, string>();
+	List<string> colorList = new List<string> { "藍", "綠", "黃", "紅" };
+
+	string blue = "藍";
+	string green = "綠";
+	string yellow = "黃";
+	string red = "紅";
 	public MainPage()
 	{
-		colorLabel.Add(LabelBlue.Text, "藍");
-		colorLabel.Add(LabelGreen.Text, "綠");
-		colorLabel.Add(LabelYellow.Text, "黃");
-		colorLabel.Add(LabelRed.Text, "紅");
 		InitializeComponent();
-		Random random = new Random(Guid.NewGuid().GetHashCode());
-
-		LabelBlue.Text = Choose(colorLabel, LabelBlue.Text);
-		LabelGreen.Text = Choose(colorLabel, LabelGreen.Text);
-		LabelYellow.Text = Choose(colorLabel, LabelYellow.Text);
-		LabelRed.Text = Choose(colorLabel, LabelRed.Text);
 	}
 
-	private string Choose(Dictionary<string,string> dictionary, string labelText)
+	private string Choose(List<string> textsLeft, List<string> labelsLeft, string labelColor)
 	{
-		int index;
-		string colorText;
-		List<string> colors = dictionary.Keys.ToList();
-		if (colors.Count() == 1) return colors[0];
-		//為了不讓最後剩的顏色和Label對應到的顏色相同
-		if (colors.Count == 2)
+		//為了不讓最後Text剩的顏色和Label對應到的顏色相同
+		if (textsLeft.Count == 2)
 		{
-			if (dictionary.ContainsValue(colors[0]) && dictionary[labelText] != colors[0])
+			foreach (var text in textsLeft)
 			{
-				colorText = colors[0];
-				colors.RemoveAt(0);
-				return colorText;
+				if (labelsLeft.Contains(text) && labelColor != text)
+				{
+					textsLeft.Remove(text);
+					labelsLeft.Remove(labelColor);
 
+					return text;
+				}
 			}
-			if (dictionary.ContainsValue(colors[1]) && dictionary[labelText] != colors[1])
-			{
-				colorText = colors[1];
-				colors.RemoveAt(1);
-				return colorText;
-			};
 		}
+
+		int index;
+		string labelText;
 
 		Random random = new Random(Guid.NewGuid().GetHashCode());
 		do
 		{
-			index = random.Next(0, colors.Count());
-			colorText = colors[index];
-		} while (dictionary[labelText] == colorText);
-		colors.RemoveAt(index);
-		dictionary.Remove(labelText);
-		return colorText;
-	}
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+			index = random.Next(0, textsLeft.Count);
+			labelText = textsLeft[index];
+		} while (labelColor == labelText);
 
-		//SemanticScreenReader.Announce(CounterBtn.Text);
+		textsLeft.RemoveAt(index);
+		labelsLeft.Remove(labelColor);
+
+		return labelText;
+	}
+	private void Button_Clicked(object sender, EventArgs e)
+	{
+		List<string> textsLeft = new List<string>(colorList);
+		List<string> labelsLeft = new List<string>(colorList);
+
+		LabelGreen.Text = Choose(textsLeft, labelsLeft, green);
+		LabelBlue.Text = Choose(textsLeft, labelsLeft, blue);
+		LabelRed.Text = Choose(textsLeft, labelsLeft, red);
+		LabelYellow.Text = Choose(textsLeft, labelsLeft, yellow);
 	}
 }
 
