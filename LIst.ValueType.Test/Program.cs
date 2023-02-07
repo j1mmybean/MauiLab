@@ -42,7 +42,7 @@ namespace LIst.ValueType.Test
 			int index;
 			string labelText;
 
-			//為了不讓最後剩的顏色和Label對應到的顏色相同
+			//為了不讓最後剩的顏色和Label對應到的顏色相同，題前將其與倒數第二個做配對
 			if (textsLeft.Count == 2)
 			{
 				foreach (var text in textsLeft)

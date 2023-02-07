@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.PgEditor"
+             Title="PgEditor">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <StackLayout>
+            <Label FontSize="25" Text="編號"/>
+            <Entry FontSize="25" x:Name="txtId" />
+            <Label FontSize="25" Text="姓名" />
+            <Entry FontSize="25" x:Name="txtName" />
+            <Label FontSize="25" Text="電話"/>
+            <Entry FontSize="25" x:Name="txtPhone" />
+            <Label FontSize="25" Text="電子郵件"/>
+            <Entry FontSize="25" x:Name="txtEmail" />
+            <Label FontSize="25" Text="地址"/>
+            <Entry FontSize="25" x:Name="txtAddress" />
+            <StackLayout 
+            VerticalOptions="FillAndExpand"
+            Orientation="Horizontal">
+                <ImageButton
+                Source="first.png"
+                BackgroundColor="#00000000"               
+                HorizontalOptions="FillAndExpand"
+                Clicked="btnFirst_Clicked" />
+                <ImageButton 
+                BackgroundColor="#00000000"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Source="previous.png"      
+                Clicked="btnPrevious_Clicked"/>
+                <ImageButton 
+                BackgroundColor="#00000000"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Source="next.png"               
+                Clicked="btnNext_Clicked"/>
+                <ImageButton 
+                
+                BackgroundColor="#00000000"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Source="last.png"               
+                Clicked="btnLast_Clicked"/>
+                <ImageButton                 
+                BackgroundColor="#00000000"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Source="query.png"               
+                Clicked="btnQuery_Clicked"/>
+                <Button 
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                ImageSource="menu.png"  
+                Clicked="btnList_Clicked" 
+                BackgroundColor="#00000000"/>
+            </StackLayout>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

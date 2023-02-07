@@ -49,11 +49,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\first.png" />
 	  <None Remove="Resources\Images\HelloWorld.png" />
+	  <None Remove="Resources\Images\last.png" />
+	  <None Remove="Resources\Images\next.png" />
+	  <None Remove="Resources\Images\previous.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="PgLotto.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\P1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\P2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PgCalc.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PgClickDemo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PgEditor.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
