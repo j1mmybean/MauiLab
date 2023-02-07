@@ -5,10 +5,13 @@
              Title="PgCalc">
     <StackLayout>
         <Label 
-            Text="計算機"
+            FontSize="Large"
+            x:Name="LabelCalculation"
+            Text=""
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
+            FontSize="Large"
             x:Name="LabelOutput"
             Text="0"
             VerticalOptions="Center" 
@@ -92,8 +95,12 @@
                 Clicked="ButtonEqual_Clicked"
                 Grid.Column="0"
                 Grid.Row="3"
-                Grid.ColumnSpan="2"
                 Text="=" />
+            <Button 
+                Clicked="ButtonClear_Clicked"
+                Grid.Column="1"
+                Grid.Row="3"
+                Text="C" />
             <Button 
                 Clicked="ButtonNumber_Clicked"
                 Grid.Column="2"

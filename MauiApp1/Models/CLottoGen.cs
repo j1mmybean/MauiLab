@@ -23,7 +23,7 @@ namespace MauiApp1.NewFolder
 				} while (numbers.Contains(number));
 				numbers.Add(number);
 			}
-			//numbers = numbers.OrderBy(n => n).ToList();
+			//numbersTemp = numbersTemp.OrderBy(n => n).ToList();
 			numbers.Sort();
 			return numbers;
 		}
