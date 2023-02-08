@@ -6,8 +6,6 @@ public partial class PgCalc : ContentPage
 {
 	List<int> numbers = new List<int>();
 	List<string> operators = new List<string>();
-	int number1;
-	string op;
 	public PgCalc()
 	{
 		InitializeComponent();
@@ -42,40 +40,49 @@ public partial class PgCalc : ContentPage
 
 		for (int i = 0; i < operatorsTemp.Count; i++)
 		{
-			if (operatorsTemp[i] == "*")
+			while (operatorsTemp[i] == "*" || operatorsTemp[i] == "/")
 			{
-				numbersTemp[i + 1] = numbersTemp[i] * numbersTemp[i + 1];
-				indices.Add(i);
-			}
-			if (operatorsTemp[i] == "/")
-			{
-				numbersTemp[i + 1] = numbersTemp[i] / numbersTemp[i + 1];
-				indices.Add(i);
+				if (operatorsTemp[i] == "*")
+				{
+					numbersTemp[i + 1] = numbersTemp[i] * numbersTemp[i + 1];
+					indices.Add(i);
+				}
+				else if (operatorsTemp[i] == "/")
+				{
+					numbersTemp[i + 1] = numbersTemp[i] / numbersTemp[i + 1];
+					indices.Add(i);
+				}
 			}
 		}
 
-		operatorsTemp = operatorsTemp.Where(o => o != "*" || o != "/").ToList();
+		operatorsTemp = operatorsTemp.Where(o => o == "+" || o == "-").ToList();
 		List<double> numberList = new List<double>();
-		for (int i = 0; i < numbersTemp.Count && !indices.Contains(i); i++)
+		for (int i = 0; i < numbersTemp.Count; i++)
 		{
-			numberList.Add(numbersTemp[i]);
+			if (!indices.Contains(i))
+			{
+				numberList.Add(numbersTemp[i]);
+			}
 		}
 		numbersTemp = numberList;
 
+		double result = numbersTemp[0];
 		for (int i = 0; i < operatorsTemp.Count; i++)
 		{
 			if (operatorsTemp[i] == "+")
 			{
-				numbersTemp[i + 1] = numbersTemp[i] + numbersTemp[i + 1];
+				result += numbersTemp[i + 1];
 			}
-			if (operatorsTemp[i] == "-")
+			else if (operatorsTemp[i] == "-")
 			{
-				numbersTemp[i + 1] = numbersTemp[i] - numbersTemp[i + 1];
+				result -= numbersTemp[i + 1];
 			}
 		}
-		double result = numbersTemp[numbersTemp.Count - 1];
 
 		LabelOutput.Text = result.ToString();
+		numbers.Clear();
+		operators.Clear();
+
 	}
 
 
@@ -111,35 +118,4 @@ public partial class PgCalc : ContentPage
 		operators.Clear();
 		LabelOutput.Text = "0";
 	}
-	//private void ButtonNumber_Clicked(object sender, EventArgs e)
-	//{
-	//	int output = Convert.ToInt32(LabelOutput.Text);
-	//	Button button = sender as Button;
-	//	if (output == 0 || string.IsNullOrEmpty(op)) LabelOutput.Text = button.Text;
-	//	else LabelOutput.Text += button.Text;
-	//}
-
-	//private void ButtonOperation_Clicked(object sender, EventArgs e)
-	//{
-	//	Button button = sender as Button;
-	//	op = button.Text;
-
-	//	int number2 = Convert.ToInt32(LabelOutput.Text);
-	//	if (op == "+") number1 = number1 + number2;
-	//	else if (op == "-") number1 = number1 - number2;
-	//	else if (op == "*") number1 = number1 * number2;
-	//	else number1 = number1 / number2;// (op == "/")
-	//	LabelOutput.Text = number1.ToString();
-	//}
-
-	//private void ButtonEqual_Clicked(object sender, EventArgs e)
-	//{
-	//	int number2 = Convert.ToInt32(LabelOutput.Text);
-	//	if (op == "+") number1 = number1 + number2;
-	//	else if (op == "-") number1 = number1 - number2;
-	//	else if (op == "*") number1 = number1 * number2;
-	//	else number1 = number1 / number2;// (op == "/")
-	//	LabelOutput.Text = number1.ToString();
-	//	op = string.Empty;
-	//}
 }

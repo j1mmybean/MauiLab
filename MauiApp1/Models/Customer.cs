@@ -13,5 +13,9 @@ namespace MauiApp1.Models
 		public string phone { get; set; }
 		public string email { get; set; }
 		public string address { get; set; }
+		public override string ToString()
+		{
+			return this.name + "(" + this.phone + ")";
+		}
 	}
 }

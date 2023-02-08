@@ -52,8 +52,10 @@
 	  <None Remove="Resources\Images\first.png" />
 	  <None Remove="Resources\Images\HelloWorld.png" />
 	  <None Remove="Resources\Images\last.png" />
+	  <None Remove="Resources\Images\menu.png" />
 	  <None Remove="Resources\Images\next.png" />
 	  <None Remove="Resources\Images\previous.png" />
+	  <None Remove="Resources\Images\query.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -66,6 +68,12 @@
 	  <MauiXaml Update="Views\P2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PgBindingByCode.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PgBindingByXaml.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PgCalc.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -73,6 +81,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PgEditor.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PgKeyword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PgList.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

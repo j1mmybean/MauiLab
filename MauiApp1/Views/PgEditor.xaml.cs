@@ -1,62 +1,83 @@
 using MauiApp1.Models;
+using MauiApp1.ViewModels;
 
 namespace MauiApp1.Views;
 
 public partial class PgEditor : ContentPage
 {
-	int index=0;
-	List<Customer> list = new List<Customer>();
+	//CustomerViewModel vm = new CustomerViewModel();
+	CustomerViewModel vm = null;
+
 	public PgEditor()
 	{
 		InitializeComponent();
-		list.Add(new Customer() { id = 1, name = "jimmy", phone = "0000000000", email = "jimmy@gmail.com", address = "sdfasdsdf" });
-		list.Add(new Customer() { id = 2, name = "tommy", phone = "0000000001", email = "tommy@gmail.com", address = "sddfasfasdf" });
-		list.Add(new Customer() { id = 3, name = "mary", phone = "0000000002", email = "mary@gmail.com", address = "sgsgsdfasdf" });
+		vm = this.BindingContext as CustomerViewModel;
 	}
 
-	private void Show(int index)
+	private void Show()
 	{
-		txtId.Text = list[index].id.ToString();
-		txtName.Text = list[index].name;
-		txtPhone.Text = list[index].phone;
-		txtEmail.Text = list[index].email;
-		txtAddress.Text = list[index].address;
+		txtId.Text = vm.Current.id.ToString();
+		txtName.Text = vm.Current.name;
+		txtPhone.Text = vm.Current.phone;
+		txtEmail.Text = vm.Current.email;
+		txtAddress.Text = vm.Current.address;
 	}
 
 	private void btnFirst_Clicked(object sender, EventArgs e)
 	{
-		index = 0;
-		Show(index);
+		vm.MoveFirst();
+		Show();
 	}
 
 	private void btnPrevious_Clicked(object sender, EventArgs e)
 	{
-		if (index>0)index--;
-
-		Show(index);
+		vm.MovePrevious();
+		Show();
 	}
 
 	private void btnNext_Clicked(object sender, EventArgs e)
 	{
-		if (index < list.Count) index++;
-
-		Show(index);
+		vm.MoveNext();
+		Show();
 	}
 
 	private void btnLast_Clicked(object sender, EventArgs e)
 	{
-		index = list.Count-1;
+		vm.MoveLast();
+		Show();
+	}
 
-		Show(index);
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		App app = Application.Current as App;
+		if (!string.IsNullOrEmpty(app.Keyword))
+		{
+			if (vm.QueryByKeyword(app.Keyword) != null) Show();
+		}
+		else if (app.SelectedCustomerIndex >= 0)
+		{
+			vm.MoveTo(app.SelectedCustomerIndex);
+			Show();
+		}
 	}
 
 	private void btnQuery_Clicked(object sender, EventArgs e)
 	{
-
+		ClearCache();
+		Navigation.PushAsync(new PgKeyword());
 	}
 
+	private void ClearCache()
+	{
+		App app = Application.Current as App;
+		app.Keyword = String.Empty;
+		app.SelectedCustomerIndex = -1;
+	}
 	private void btnList_Clicked(object sender, EventArgs e)
 	{
-
+		App app = Application.Current as App;
+		app.customerList = vm.All;
+		Navigation.PushAsync(new PgList());
 	}
 }
