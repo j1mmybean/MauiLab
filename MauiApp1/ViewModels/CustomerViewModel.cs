@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace MauiApp1.ViewModels
 {
-	public class CustomerViewModel : INotifyPropertyChanging
+	public class CustomerViewModel : INotifyPropertyChanged
 	{
 		int index = 0;
 
 		List<Customer> _list = new List<Customer>();
 
-		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public CustomerViewModel()
 		{
@@ -30,22 +30,27 @@ namespace MauiApp1.ViewModels
 		public void MoveFirst()
 		{
 			index = 0;
+			PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 		}
 		public void MovePrevious()
 		{
 			if (index > 0) index--;
+			PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 		}
 		public void MoveNext()
 		{
 			if (index < _list.Count - 1) index++;
+			PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 		}
 		public void MoveLast()
 		{
 			index = _list.Count - 1;
+			PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 		}
 		public void MoveTo(int to)
 		{
 			index = to;
+			PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 		}
 
 		internal Customer QueryByKeyword(string keyword)
@@ -58,9 +63,11 @@ namespace MauiApp1.ViewModels
 					_list[i].address.Contains(keyword))
 				{
 					index = i;
+					PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 					return _list[i];
 				}
 			}
+			PropertyChanged(this, new PropertyChangedEventArgs("Current"));
 			return null;
 		}
 

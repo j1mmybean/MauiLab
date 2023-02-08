@@ -15,15 +15,15 @@
             HorizontalOptions="Center" />
         <StackLayout>
             <Label FontSize="25" Text="編號"/>
-            <Entry FontSize="25" x:Name="txtId" />
+            <Entry FontSize="25" x:Name="txtId" Text="{Binding Current.id, Mode=TwoWay}"/>
             <Label FontSize="25" Text="姓名" />
-            <Entry FontSize="25" x:Name="txtName" />
+            <Entry FontSize="25" x:Name="txtName" Text="{Binding Current.name, Mode=TwoWay}"/>
             <Label FontSize="25" Text="電話"/>
-            <Entry FontSize="25" x:Name="txtPhone" />
+            <Entry FontSize="25" x:Name="txtPhone" Text="{Binding Current.phone, Mode=TwoWay}"/>
             <Label FontSize="25" Text="電子郵件"/>
-            <Entry FontSize="25" x:Name="txtEmail" />
+            <Entry FontSize="25" x:Name="txtEmail" Text="{Binding Current.email, Mode=TwoWay}"/>
             <Label FontSize="25" Text="地址"/>
-            <Entry FontSize="25" x:Name="txtAddress" />
+            <Entry FontSize="25" x:Name="txtAddress" Text="{Binding Current.address, Mode=TwoWay}"/>
             <StackLayout 
             VerticalOptions="FillAndExpand"
             Orientation="Horizontal">

@@ -14,37 +14,37 @@ public partial class PgEditor : ContentPage
 		vm = this.BindingContext as CustomerViewModel;
 	}
 
-	private void Show()
-	{
-		txtId.Text = vm.Current.id.ToString();
-		txtName.Text = vm.Current.name;
-		txtPhone.Text = vm.Current.phone;
-		txtEmail.Text = vm.Current.email;
-		txtAddress.Text = vm.Current.address;
-	}
+	//private void Show()
+	//{
+	//	txtId.Text = vm.Current.id.ToString();
+	//	txtName.Text = vm.Current.name;
+	//	txtPhone.Text = vm.Current.phone;
+	//	txtEmail.Text = vm.Current.email;
+	//	txtAddress.Text = vm.Current.address;
+	//}
 
 	private void btnFirst_Clicked(object sender, EventArgs e)
 	{
 		vm.MoveFirst();
-		Show();
+		//Show();
 	}
 
 	private void btnPrevious_Clicked(object sender, EventArgs e)
 	{
 		vm.MovePrevious();
-		Show();
+		//Show();
 	}
 
 	private void btnNext_Clicked(object sender, EventArgs e)
 	{
 		vm.MoveNext();
-		Show();
+		//Show();
 	}
 
 	private void btnLast_Clicked(object sender, EventArgs e)
 	{
 		vm.MoveLast();
-		Show();
+		//Show();
 	}
 
 	protected override void OnAppearing()
@@ -53,12 +53,13 @@ public partial class PgEditor : ContentPage
 		App app = Application.Current as App;
 		if (!string.IsNullOrEmpty(app.Keyword))
 		{
-			if (vm.QueryByKeyword(app.Keyword) != null) Show();
+			vm.QueryByKeyword(app.Keyword);
+			//if (vm.QueryByKeyword(app.Keyword) != null) Show();
 		}
 		else if (app.SelectedCustomerIndex >= 0)
 		{
 			vm.MoveTo(app.SelectedCustomerIndex);
-			Show();
+			//Show();
 		}
 	}
 
@@ -76,6 +77,7 @@ public partial class PgEditor : ContentPage
 	}
 	private void btnList_Clicked(object sender, EventArgs e)
 	{
+		ClearCache();
 		App app = Application.Current as App;
 		app.customerList = vm.All;
 		Navigation.PushAsync(new PgList());
