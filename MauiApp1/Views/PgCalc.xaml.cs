@@ -80,6 +80,8 @@ public partial class PgCalc : ContentPage
 		}
 
 		LabelOutput.Text = result.ToString();
+
+		//«ö=«á¦A«ö*·|¿ù
 		numbers.Clear();
 		operators.Clear();
 

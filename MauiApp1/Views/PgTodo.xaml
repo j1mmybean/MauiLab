@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.PgTodo"
+             Title="PgTodo">
+    <VerticalStackLayout>
+        <Label 
+            Text="待辦工作App"
+            FontSize="30"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="工作項目"
+            FontSize="30" />
+        <Entry x:Name="txtTodo"/>
+        <Label 
+            Text="預計完成日期"
+            FontSize="30" />
+        <Entry x:Name="txtDate"/>
+        <HorizontalStackLayout>
+            <Button Clicked="ButtonAdd_Clicked"
+                    Text="加入"/>
+            <Button Clicked="ButtonTodoList_Clicked"
+                    Text="瀏覽"/>
+            <Button Clicked="ButtonEdit_Clicked"
+                    Text="編輯"/>
+            <Button Clicked="ButtonDelete_Clicked"
+                    Text="刪除"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

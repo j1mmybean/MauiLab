@@ -1,4 +1,5 @@
 ﻿using MauiApp1.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ namespace MauiApp1.ViewModels
 {
 	public class CustomerViewModel : INotifyPropertyChanged
 	{
+		private SQLiteAsyncConnection _con;
 		int index = 0;
 
 		List<Customer> _list = new List<Customer>();
